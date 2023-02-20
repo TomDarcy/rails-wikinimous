@@ -1,0 +1,53 @@
+<h1>My Wiki</h1>
+<div class="actions">
+  <%# buttons to create new article and visit real wiki page %>
+</div>
+<div class="container text-center">
+  <div class="row">
+  </div>
+  <div class="row">
+    <% featured_article = @articles.sample %>
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <h3>Featured article</h3>
+      <div class="card" style="width: 100%;">
+        <%= image_tag(featured_article.image, class: "card-img-top wiki-img", alt: "...") %>
+        <div class="card-body">
+          <h5 class="card-title"><%= featured_article.title %></h5>
+          <p class="card-text"><%= featured_article.content %></p>
+          <%= link_to featured_article.title, featured_article, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <h3>Random articles</h3>
+      <% 1.times do %>
+        <div class="card" style="width: 100%;">
+          <%= image_tag(@articles.sample.image, class: "card-img-top wiki-img", alt: "...") %>
+          <div class="card-body">
+            <h5 class="card-title"><%= @articles.sample.title %></h5>
+            <p class="card-text"><%= @articles.sample.content %></p>
+            <%= link_to @articles.sample.title, @articles.sample, class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12 actions">
+      <%= link_to "Add a new article", new_article_path, class: "btn btn-primary" %>
+      <%= link_to "Visit the real Wikipedia", "https://en.wikipedia.org/wiki/Main_Page", class: "btn btn-primary" %>
+    </div>
+  </div>
+  <div class="row card-deck">
+    <% @articles.each do |article| %>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card h-100" style="width: 100%;">
+          <%= image_tag(article.image, class: "card-img-top wiki-img", alt: "...") %>
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title"><%=article.title%>  </h5>
+            <p class="card-text flex-grow-1 card-text-truncate"><%=article.content %></p>
+            <%= link_to article.title, article, class: "mt-auto btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

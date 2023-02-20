@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+# create 10 articles containing title, content and image url using faker
+10.times do
+  Article.create(
+    title: Faker::Book.title,
+    content: Faker::Lorem.paragraph,
+    image: 'https://source.unsplash.com/random/'
+  )
+end

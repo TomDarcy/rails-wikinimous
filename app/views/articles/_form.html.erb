@@ -1,0 +1,9 @@
+<%= form_with model: article do |t| %>
+  <%= t.label :title %>
+  <%= t.text_field :title %>
+  <%= t.label :content %>
+  <%= t.text_field :content %>
+  <%= t.label :image %>
+  <%= t.text_field :image %>
+  <%= t.submit %>
+<% end %>
